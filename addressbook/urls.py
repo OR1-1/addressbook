@@ -1,6 +1,9 @@
 from django.conf.urls import patterns, include, url
-
 from django.contrib import admin
+import contacts.views
+from django.core.urlresolvers import reverse, reverse_lazy
+from contacts.models import Contact
+
 admin.autodiscover()
 
 urlpatterns = patterns('',
@@ -9,4 +12,7 @@ urlpatterns = patterns('',
     # url(r'^blog/', include('blog.urls')),
 
     url(r'^admin/', include(admin.site.urls)),
+    url(r'^$', contacts.views.ListContactView.as_view(), name='contacts-list',),
+    # url(r'^new$', contacts.views.CreateContactView.as_view(), name='contacts-new',),
+    url(r'^new$', contacts.views.CreateContactView.as_view(model=Contact, success_url=reverse_lazy('contacts-list')), name='contacts-new',),
 )
