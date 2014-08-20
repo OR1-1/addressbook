@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.views.generic import ListView, CreateView, UpdateView, DeleteView
+from django.views.generic import ListView, CreateView, UpdateView, DeleteView, DetailView
 from django.core.urlresolvers import reverse, reverse_lazy
 from contacts.models import Contact
 
@@ -33,7 +33,11 @@ class UpdateContactView(UpdateView):
 
 class DeleteContactView(DeleteView):
     model = Contact
-    template_name = 'delete'
+    template_name = 'delete_contact.html'
 
     # def get_success_url(self):
         # return reverse('contacts-list')
+
+class ContactView(DetailView):
+    model = Contact
+    template_name = 'contact.html'
