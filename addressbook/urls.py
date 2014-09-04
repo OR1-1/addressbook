@@ -18,4 +18,5 @@ urlpatterns = patterns('',
     url(r'^edit/(?P<pk>\d+)/$', contacts.views.UpdateContactView.as_view(model=Contact, success_url=reverse_lazy('contacts-list')), name='contacts-edit'),
     url(r'^delete/(?P<pk>\d+)/$', contacts.views.DeleteContactView.as_view(model=Contact, success_url=reverse_lazy('contacts-list')), name='contacts-delete'),
     url(r'^(?P<pk>\d+)/$', contacts.views.ContactView.as_view(), name='contacts-view'),
+    url(r'^edit/(?P<pk>\d+)/address/$', contacts.views.EditContactAddressView.as_view(), name='contacts-edit-addresses', ),
 )
