@@ -8,7 +8,9 @@
 
 <ul>
 {% for address in contact.address_set.all %}
-    <li>{{ address.address }} <br />
+    <li>{% if address.address %}
+            {{ address.address }} <br />
+        {% endif %}
         {{ address.city }} {{ address.state }} <br />
         {{ address.postal_code }}
     </li>
